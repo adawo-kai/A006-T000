@@ -1,29 +1,26 @@
-//Task2
+// Task 1
+//new version
 import java.util.*;
-public class main3 {
-    public static void main(String[] args){
+
+public class task1 {
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String password = sc.nextLine();
+        if (!sc.hasNextLine()) {
+            return;
+        }
 
-        boolean hasDigit = false;
-        boolean hasUpper = false;
+        String commands = sc.nextLine().trim();
+        int position = 0;
 
-        for (int i = 0; i < password.length(); i++){
-            char c = password.charAt(i);
-
-            if (Character.isDigit(c)) {
-                hasDigit = true;
-            }
-            if (Character.isUpperCase(c)) {
-                hasUpper = true;
+        for (int i = 0; i < commands.length(); i++) {
+            char c = commands.charAt(i);
+            if (c == 'L') {
+                position -= 1;
+            } else if (c == 'R') {
+                position += 1;
             }
         }
 
-        if ( password.length() >= 8 && hasDigit && hasUpper ){
-            System.out.println("STRONG");
-        }else{
-            System.out.println("WEAK");
-        }
-        System.out.println();
+        System.out.println(position);
     }
 }
